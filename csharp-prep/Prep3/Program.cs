@@ -11,13 +11,15 @@ class Program
         while (continu == "yes")
         {
             int int_guess = 0;
+            int num_guess = 0;
             Random randomGenerator = new Random();
-            int number = randomGenerator.Next(1, 10);
-            Console.Write("I have chosen a magic number.");
+            int number = randomGenerator.Next(1, 100);
+            Console.WriteLine("I have chosen a magic number between 1 and 100.");
             
             while (int_guess != number)
             {
-                Console.Write("What is your guess?");
+                num_guess ++ ;
+                Console.Write("What is your guess? ");
                 string guess = Console.ReadLine();
 
                 int_guess = int.Parse(guess);
@@ -25,6 +27,7 @@ class Program
                 if (int_guess == number)
                 {
                     Console.WriteLine("Great work! You guessed the magic number.");
+                    Console.WriteLine($"It took you {num_guess} guesses.");
                     break;
                 }
 
@@ -44,5 +47,6 @@ class Program
 
         } while (continu == "yes");
 
+    Console.WriteLine("Thank you for playing.");
     }
 }
