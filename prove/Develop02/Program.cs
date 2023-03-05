@@ -36,8 +36,9 @@ class Program
             string date = pieces[0];
             string text = pieces[1];
             string prompt = pieces[2];
+            string tag = pieces[3];
 
-            Entry newEntry = new Entry(prompt, text, date);
+            Entry newEntry = new Entry(date, prompt, text, tag);
             entries.Add(newEntry);
         }
 
@@ -56,7 +57,7 @@ class Program
         {
             foreach (Entry entry in entries)
             {
-                string entryString = $"{entry._date}`{entry._text}`{entry._prompt}";
+                string entryString = $"{entry._date}`{entry._text}`{entry._prompt}`{entry._tag}";
                 outputFile.WriteLine(entryString);
             }
         }
@@ -80,7 +81,7 @@ class Program
             // Display menu
             string response = Menu();
 
-            while (response != "1" && response != "2" && response != "3" && response != "4" && response != "5")
+            while (response != "1" && response != "2" && response != "3" && response != "4" && response != "5" && response != "6")
             {
                 Console.WriteLine("Not a valid answer, select a choice (1 - 5)");
                 response = Console.ReadLine();
@@ -93,9 +94,24 @@ class Program
                 string newPrompt = prompt.RandoString();
                 Console.WriteLine(newPrompt);
                 string responseText = Console.ReadLine();
-                Entry newEntry = new Entry(newPrompt, responseText);
-                entryList.Add(newEntry);
-                Console.WriteLine();
+                Console.WriteLine("");
+                Console.WriteLine("Do you want to add a tag to be able to search for this entry easier? ( y/n )");
+                string tag = Console.ReadLine();
+                if (tag == "y")
+                {
+                    Console.WriteLine("What tag? ");
+                    string newTag = Console.ReadLine();
+                    Entry newEntry = new Entry(newPrompt, responseText, newTag);
+                    entryList.Add(newEntry);
+                    Console.WriteLine();
+                }
+                else
+                {
+                    string newTag = "";
+                    Entry newEntry = new Entry(newPrompt, responseText, newTag);
+                    entryList.Add(newEntry);
+                    Console.WriteLine();
+                }  
             }
 
             else if (response == "2")
