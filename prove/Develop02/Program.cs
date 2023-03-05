@@ -95,6 +95,7 @@ class Program
                 string responseText = Console.ReadLine();
                 Entry newEntry = new Entry(newPrompt, responseText);
                 entryList.Add(newEntry);
+                Console.WriteLine();
             }
 
             else if (response == "2")
