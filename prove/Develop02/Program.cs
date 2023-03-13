@@ -38,7 +38,7 @@ class Program
             string prompt = pieces[2];
             string tag = pieces[3];
 
-            Entry newEntry = new Entry(date, prompt, text, tag);
+            Entry newEntry = new Entry(prompt, text, date, tag);
             entries.Add(newEntry);
         }
 
