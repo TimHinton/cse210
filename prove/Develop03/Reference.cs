@@ -4,7 +4,7 @@ public class Reference
     private string _chapter;
     private string _verse1;
     private string _verse2;
-    private List<string[]> _references;
+
 
 
     public Reference(int number)
@@ -14,31 +14,29 @@ public class Reference
         // Use filename to retrieve the entries
         string[] lines = System.IO.File.ReadAllLines(filename);
 
-        // Iterate through each line, create list containing each word in scripture
-        // and add this list to the _lists
-        foreach (string line in lines)
+        
+        // Get the reference being used and split it into separate strings
+        // to be used to create object attributes
+        string currentRefer = lines[number];
+        
+        string[] splitReference = currentRefer.Split(" ");
+
+
+        // Set attributes for instance
+        if (splitReference.Count() == 3)
         {
-            string[] singleReference = line.Split(" ");
-
-            _references.Add(singleReference);
-        }
-
-        string [] currentRefer = _references[number];
-
-        if (currentRefer.Count() == 3)
-        {
-            _book = currentRefer[0];
-            _chapter = currentRefer[1];
-            _verse1 = currentRefer[2];
+            _book = splitReference[0];
+            _chapter = splitReference[1];
+            _verse1 = splitReference[2];
             _verse2 = "";
         }
 
         else
         {
-            _book = currentRefer[0];
-            _chapter = currentRefer[1];
-            _verse1 = currentRefer[2];
-            _verse2 = currentRefer[3];
+            _book = splitReference[0];
+            _chapter = splitReference[1];
+            _verse1 = splitReference[2];
+            _verse2 = splitReference[3];
         }
         
     }
@@ -47,7 +45,7 @@ public class Reference
 
     public string AddRefer()
     {
-        if (_verse2 != "")
+        if (_verse2 == "")
         {
             string refer = $"{_book} {_chapter}: {_verse1}";
 

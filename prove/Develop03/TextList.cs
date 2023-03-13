@@ -1,32 +1,19 @@
 public class TextList
 {
-    private List<string[]> _lists;
     private int _reference;
     
     public TextList()
     {
+    }    
 
-        string filename = "textfile.txt";
-
-        // Use filename to retrieve the entries
-        string[] lines = System.IO.File.ReadAllLines(filename);
-
-        // Iterate through each line, create list containing each word in scripture
-        // and add this list to the _lists
-        foreach (string line in lines)
-        {
-            string[] pieces = line.Split(" ");
-
-            _lists.Add(pieces);
-        }
-    }
-
-    public string[] GetScrip()
+    public string[] GetScrip(List<string> scripLists)
     {
         Random choice = new Random();
-        int number = choice.Next(1, 5);
+        int number = choice.Next(0, 4);
 
-        string[] listReturn = _lists[number];
+        string fullScripture = scripLists[number];
+        
+        string[] listReturn = fullScripture.Split(" ");
 
         _reference = number;
 
@@ -36,5 +23,18 @@ public class TextList
     public int GetReference()
     {
         return _reference;
+    }
+
+    public List<string> PopulateList()
+    {
+        string filename = "textfile.txt";
+        List<string> scripLists = new List<string>();
+
+        // Use filename to retrieve the scripture texts
+        string[] lines = System.IO.File.ReadAllLines(filename); 
+
+        scripLists.AddRange(lines);
+
+        return scripLists;
     }
 }

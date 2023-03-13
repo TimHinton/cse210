@@ -1,5 +1,5 @@
-john 3 16
-moroni 7 37
-moroni 7 45 46
-alma 32 21
-alma 7 11 13
+John 3 16
+Moroni 7 37
+Moroni 7 45 46
+Alma 32 21
+Alma 7 11 13

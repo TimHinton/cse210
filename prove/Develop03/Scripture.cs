@@ -2,56 +2,61 @@ public class Scripture
 {
     private string _text;
     private string _reference;
-    private int _countShowing;
-    private List<int> _remainingWords;
+
 
     public Scripture(string[] wordList, string reference)
     {
+        _reference = reference;
+
         foreach (string word in wordList)
         {
             _text = $"{_text} {word}";
         }
-
-        _countShowing = wordList.Count();
-        int count = (wordList.Count() - 1);
-        _reference = reference;
-
-        int counter = 0;
-        while (counter <= count)
-        {
-            _remainingWords.Add(counter);
-            counter ++;
-        }
     } 
 
-    public void DisplayText()
-    {
-        Console.WriteLine($"{_reference} : {_text}");
+    public void DisplayText(string[] wordList)
+    {        
+        Console.WriteLine($"{_reference} -{_text}");
+        Console.WriteLine("");
         Console.WriteLine("Press Enter to hide words or type quit to end. ");
     }
 
 
-    public void HideWords(string[] wordlist)
+    public void HideWords(string[] wordList, List<int> indexList)
     {
-        int counter = 5;
-
+        int counter = 4;
 
         while (counter > 0)
         {
-            int remainingIndex = (wordlist.Count() - 1);
+            int remainingIndex = (indexList.Count() - 1);
             Random choice = new Random();
             int number = choice.Next(0, remainingIndex);
 
-            wordlist[number] = "____";
-            _remainingWords.RemoveAt(number);
+            int index = indexList[number];
+            wordList[index] = "____";
+            indexList.RemoveAt(number);
             counter --;
-            _countShowing --;
 
-            if (_countShowing == 0)
+            if (indexList.Count() == -1)
             {
                 break;
             }
         }
         
+    }
+
+
+    public List<int> makeIndexList(string[] wordList)
+    {
+        List<int> indexList = new List<int>();
+        int count = (wordList.Count() - 1);
+        int counter = 0;
+        while (counter <= count)
+        {
+            indexList.Add(counter);
+            counter ++;
+        }
+
+        return indexList;
     }
 }
