@@ -1,9 +1,18 @@
 public class TextList
 {
     private int _reference;
+    //private List<string> _refList;
     
     public TextList()
     {
+        /*
+        string filename = "textfile.txt";
+
+        // Use filename to retrieve the scripture texts
+        string[] lines = System.IO.File.ReadAllLines(filename); 
+
+        _refList.AddRange(lines);
+        */
     }    
 
     public string[] GetScrip(List<string> scripLists)
