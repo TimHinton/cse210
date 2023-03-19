@@ -49,7 +49,4 @@ public class ListingActivity : Activity
 
         Console.WriteLine($"\nYou listed {_items.Count()}.");
     }
-
-
-
 }
