@@ -9,7 +9,7 @@ public class Player
     {
         _name = "user";
         _points = 0;
-        List<string> _goals = new List<string>();
+        _goals = new List<string>();
     }
 
     public Player(string name, int points, List<string> goals)
@@ -21,7 +21,7 @@ public class Player
 
     public void AddGoal(string goal)
     {
-        this._goals.Add(goal);
+        _goals.Add(goal);
     }
 
     public void SaveGame()
