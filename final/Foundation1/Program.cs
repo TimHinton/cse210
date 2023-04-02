@@ -21,6 +21,7 @@ class Program
         
         Comment vid1Comment3 = new Comment();
         CreateComment(vid1Comment3, "Strong-Bad", "Yo, that was dope. Me and The Cheat were rofl'ing.", video1);
+        video1.AddComment(vid1Comment3);
 
 
         Video video2 = new Video();
@@ -37,9 +38,9 @@ class Program
 
 
         Video video3 = new Video();
-        video2.SetTitle("Watch to the End");
-        video2.SetAuthor("Wut?");
-        video2.SetLength("2:22");
+        video3.SetTitle("Watch to the End");
+        video3.SetAuthor("Wut?");
+        video3.SetLength("2:22");
 
         Comment vid3Comment1 = new Comment();
         CreateComment(vid3Comment1, "Strong-Sad", "Why can't the squirrels just have the nuts?", video3);
@@ -56,7 +57,7 @@ class Program
 
         foreach (Video video in videoList)
         {
-            DisplayVideoInfo();
+            video.DisplayVideoInfo();
         }
     }
 

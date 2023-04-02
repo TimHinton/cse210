@@ -36,16 +36,19 @@ public class Video
         return _commentList.Count();
     }
 
+    
     public void DisplayVideoInfo()
     {
-        Console.WriteLine($"{_title} by {_author}, {_length}.");
-        Console.WriteLine(GetNumberOfComments() + "comments.");
+        Console.WriteLine($"{_title} by {_author}, {_length}");
+        Console.WriteLine(GetNumberOfComments() + " comments");
         Console.WriteLine("");
 
         foreach (Comment comment in _commentList)
         {
-            Console.WriteLine(GetCommentAuthor + ":" + GetCommentText() + "\n");
+            Console.WriteLine(comment.GetCommentAuthor() + ": " + comment.GetCommentText() + "\n");
         }
+
+        Console.WriteLine("");
     }
 
 }
